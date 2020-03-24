@@ -15,11 +15,11 @@ The repo may be setup for Linux, OSX, or WSL, this guide will be using Linux. It
     $ sudo dpkg -i code_1.26.0-1534177765_amd64.deb
 * git  
     $ sudo apt install git
-* Python 3.7
+* Python 3
     - should be installed by default on ubuntu
-    - make sure python3 --version points to python3.7, you may need to add/alter a symlink
+    - make sure python3 
     - install Python headers and static libraries   
-        $ sudo apt-get install python3.7-dev
+        $ sudo apt-get install python3-dev
     - install pip3  
         $ sudo apt install python3-pip  
 
