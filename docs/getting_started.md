@@ -22,7 +22,10 @@ The repo may be setup for Linux, OSX, or WSL, this guide will be using Linux. It
         $ sudo apt-get install python3-dev
     - install pip3  
         $ sudo apt install python3-pip  
-
+* dialout group
+    - add user to dialout group to acces /dev/tty devices
+    $ sudo gpasswd --add ${USER} dialout
+    - reset machine 
 ## gcc-arm-none-eabi 
     $ sudo add-apt-repository ppa:team-gcc-arm-embedded/ppa  
     $ sudo apt-get update  
