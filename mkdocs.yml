@@ -1,0 +1,5 @@
+site_name: csse4011-docs
+nav:
+    - Home: index.md
+    - Getting Started: getting_started.md
+theme: readthedocs
