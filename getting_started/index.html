@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Getting Started - csse4011-docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Getting Started";
+    var mkdocs_page_input_path = "getting_started.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> csse4011-docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Getting Started</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#hardware">Hardware</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#software-installation">Software Installation:</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#gcc-arm-none-eabi">gcc-arm-none-eabi</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#installing-segger-jlink">Installing Segger JLink</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#repository-setup">Repository Setup</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#generate-ssh-key">Generate SSH Key</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#set-up-environment-variables">Set up environment variables</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#setup-the-repository">Setup the Repository</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#compile-and-flash-an-app">Compile and flash an app:</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#compiling-the-app-low_power">compiling the app low_power:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#flashing-an-app">flashing an app</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#verifying-jlink">verifying JLink</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#flashing-the-app">flashing the app</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#tips">tips:</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">csse4011-docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Getting Started</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="csirocsse4011-open-repository-setup-guide">CSIRO/CSSE4011 open repository setup guide</h1>
+<h2 id="hardware">Hardware</h2>
+<ul>
+<li>JLink Debugger/Programmer e.g. JLink EDU Mini</li>
+<li>nrf52840 particle argon/xenon</li>
+<li>other boards may be supported, i.e nrf52840dk, boards that are supported are listed in ei_freertos/core_csiro/platform</li>
+</ul>
+<h2 id="software-installation">Software Installation:</h2>
+<p>The repo may be setup for Linux, OSX, or WSL, this guide will be using Linux. It is not recommended to use a virtual machine due to extended compilation times.</p>
+<ul>
+<li>VScode<ul>
+<li>https://code.visualstudio.com/Download<br />
+$ cd ~/Downloads<br />
+$ sudo dpkg -i code_1.26.0-1534177765_amd64.deb</li>
+</ul>
+</li>
+<li>git<br />
+    $ sudo apt install git</li>
+<li>Python 3<ul>
+<li>should be installed by default on ubuntu</li>
+<li>make sure python3 </li>
+<li>install Python headers and static libraries <br />
+    $ sudo apt-get install python3-dev</li>
+<li>install pip3<br />
+    $ sudo apt install python3-pip  </li>
+</ul>
+</li>
+<li>dialout group<ul>
+<li>add user to dialout group to acces /dev/tty devices
+$ sudo gpasswd --add ${USER} dialout</li>
+<li>reset machine </li>
+</ul>
+</li>
+</ul>
+<h2 id="gcc-arm-none-eabi">gcc-arm-none-eabi</h2>
+<pre><code>$ sudo add-apt-repository ppa:team-gcc-arm-embedded/ppa  
+$ sudo apt-get update  
+$ sudo apt-get install gcc-arm-embedded
+</code></pre>
+<h2 id="installing-segger-jlink">Installing Segger JLink</h2>
+<pre><code>- download from https://www.segger.com/downloads/jlink/
+- J-Link Software and Documentation pack for Linux, DEB installer, 64-bit  
+$ sudo dpkg -i ~/Downloads/jlink_5.2.7_x86_64.deb
+</code></pre>
+<h2 id="repository-setup">Repository Setup</h2>
+<h3 id="generate-ssh-key">Generate SSH Key</h3>
+<p>$ ssh-keygen -t rsa -C "example@example@uqconnect.edu.au"<br />
+$ ssh-add<br />
+then copy the key from id_rsa.pub to your github account</p>
+<h3 id="set-up-environment-variables">Set up environment variables</h3>
+<p>add the following lines to ~/.bashrc </p>
+<ul>
+<li>export PATH=&lt;ei-freertos-path>/tools:$PATH</li>
+<li>export PYTHONPATH=&lt;ei-freertos-path>/pyclasses:$PYTHONPATH</li>
+</ul>
+<p>$ source ~/.bashrc</p>
+<h2 id="setup-the-repository">Setup the Repository</h2>
+<pre><code>$ git clone https://github.com/csiro-wsn/ei-freertos.git  
+$ ./repo_setup.sh
+</code></pre>
+<h2 id="compile-and-flash-an-app">Compile and flash an app:</h2>
+<h3 id="compiling-the-app-low_power">compiling the app low_power:</h3>
+<pre><code>$ cd apps/low_power  
+$ make TARGET=argon debug -j
+</code></pre>
+<h3 id="flashing-an-app">flashing an app</h3>
+<p>connect your jlink EDU mini  </p>
+<h4 id="verifying-jlink">verifying JLink</h4>
+<pre><code>verify it is plugged in correctly and recognises the device
+$ JLinkExe
+    &gt; connect
+    &gt; S
+    &gt; &lt;Enter&gt;
+If a Target device selection comes up, select nrf52840_xxAA, by nordic semiconductors, Cortex-M4 on subsequent connects it will be the default device
+</code></pre>
+<h3 id="flashing-the-app">flashing the app</h3>
+<pre><code>$ make TARGET=argon flashdbg -j   
+blue LED should start blinking
+</code></pre>
+<h3 id="tips">tips:</h3>
+<pre><code>$ make TARGET=argon help - generates help message  
+$ make TARGET=argon jlinksn - get serial numbers of devices connected - useful for multiple devices connected  
+$ make TARGET=argon JLINK=&lt;serial number&gt; - needed when multiple devices connected to computer or it will give you error, alternatively just take one out
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href=".." class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
