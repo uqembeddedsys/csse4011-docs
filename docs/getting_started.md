@@ -27,6 +27,11 @@ The repo may be setup for Linux, OSX, or WSL, this guide will be using Linux. It
     $ sudo gpasswd --add ${USER} dialout
     - reset machine 
 ## gcc-arm-none-eabi 
+
+For Debian try:
+    $ sudo apt-get install gcc-arm-none-eabi
+
+For Ubuntu try:
     $ sudo add-apt-repository ppa:team-gcc-arm-embedded/ppa  
     $ sudo apt-get update  
     $ sudo apt-get install gcc-arm-embedded  
