@@ -60,7 +60,7 @@ $ source ~/.bashrc
 
 ## Setup the Repository
 
-    $ git clone https://github.com/csiro-wsn/ei-freertos.git  
+    $ git clone https://github.com/uqembeddedsys/ei-freertos.git
     $ ./repo_setup.sh
 
 ## Compile and flash an app:
