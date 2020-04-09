@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>MicroPython - csse4011-docs</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "MicroPython";
+    var mkdocs_page_input_path = "mpy.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> csse4011-docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../getting_started/">Getting Started</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../tutorials/">Tutorials</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">MicroPython</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#setting-up-micropython">Setting up MicroPython</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#step-0-install-the-necessary-libraries">Step 0. Install the necessary libraries</a></li>
+        
+            <li><a class="toctree-l3" href="#step-1-building-micropython-repository">Step 1. Building MicroPython Repository</a></li>
+        
+            <li><a class="toctree-l3" href="#step-2-building-the-stm32-micropython-port">Step 2. Building the STM32 MicroPython Port</a></li>
+        
+            <li><a class="toctree-l3" href="#step-3-testing-the-connection">Step 3. Testing the connection</a></li>
+        
+            <li><a class="toctree-l3" href="#step-4-flashing-your-first-application">Step 4. Flashing your first application</a></li>
+        
+            <li><a class="toctree-l3" href="#notes">Notes</a></li>
+        
+            <li><a class="toctree-l3" href="#making-development-easier-symlinks-and-env-variables">Making development easier. Symlinks and env variables</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">csse4011-docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>MicroPython</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="setting-up-micropython">Setting up MicroPython</h1>
+<p>This tutorial covers how to install MicroPython on the B-L475E-IOT01A board. It also provides instructions on how to flash the board too, along with key files on an Ubuntu machine.</p>
+<h2 id="step-0-install-the-necessary-libraries">Step 0. Install the necessary libraries</h2>
+<p>The assumption this guide makes is that the arm-gcc-tool chain, stlink-tools, and Python3 are already installed. The other libraries that need to be installed are as followed as they handle the additional dependencies of MicroPython.</p>
+<ol>
+<li>
+<p><code>sudo apt-get install libffi-dev</code></p>
+</li>
+<li>
+<p><code>sudo apt-get install pkg-config</code></p>
+</li>
+</ol>
+<h2 id="step-1-building-micropython-repository">Step 1. Building MicroPython Repository</h2>
+<p>Clone repository as usual.</p>
+<pre><code class="bash">git clone https://github.com/micropython/micropython.git
+</code></pre>
+
+<p>This is then followed by building mpy-cross folder. This allows the Python code to be cross-compiled into a .mpy file. Run this in the root of the repository.</p>
+<pre><code class="bash">make -C mpy-cross
+</code></pre>
+
+<h2 id="step-2-building-the-stm32-micropython-port">Step 2. Building the STM32 MicroPython Port</h2>
+<p>Once Step 1 has been completed, you should be ready to build the STM32 port of MicroPython. Go to the STM32 port folder located in <code>ports/stm32</code>.</p>
+<pre><code class="bash"># Assuming root directory
+cd ports/stm32
+</code></pre>
+
+<p>We then build the submodules that the STM32 library requires.</p>
+<pre><code class="bash">make submodules
+</code></pre>
+
+<p>We then build MicroPython to be compatible with our board.</p>
+<pre><code class="bash">make BOARD=B_L475E_IOT01A
+</code></pre>
+
+<p>Finally we flash the board using ST-LINK. This would update firmware.</p>
+<pre><code class="bash">make BOARD=B_L475E_IOT01A deploy-stlink
+</code></pre>
+
+<h2 id="step-3-testing-the-connection">Step 3. Testing the connection</h2>
+<p>To test/verify if the board has been flashed, connect to the board serially. This can be done with various software such as PuTTY; all that is needed is a baud rate of 115200.</p>
+<pre><code class="bash">/bin/screen /dev/ttyACM0 115200
+</code></pre>
+
+<p>Pressing enter or CTRL-C should bring out the familiar command line interface of Python. You should then be able to run typical Python code normally.</p>
+<h2 id="step-4-flashing-your-first-application">Step 4. Flashing your first application</h2>
+<p>Flashing the board is simply a matter of using the <code>pyboard.py</code> file located in the <code>tools</code> folder. Go to the <code>tools</code> folder and create a <code>main.py</code> file. Using this code snippet below.</p>
+<pre><code class="python"># Machine is a MicroPython library.
+from machine import Pin
+import time
+
+# Get PB14 and treat it as a GPIO Output pin
+led_pin = Pin('PB14', Pin.OUT)
+value = 1
+
+# Toggle the pin every one second
+while 1:
+    led_pin.value(value)
+    if value == 1:
+        value = 0
+    else:
+        value = 1
+
+    # Somewhat similar to HAL_Delay()
+    time.sleep(1)
+</code></pre>
+
+<p>Flashing the board is a matter of calling the bash commands below inside the <code>tools</code> folder.</p>
+<pre><code class="bash"># Think of it as running the cp command as with most Linux systems. You are copying the main.py file and placing it inside the board with the same name. Device name is whatever appears on your machine.
+python3 pyboard.py --device /dev/ttyACM0 cp main.py :main.py
+</code></pre>
+
+<p>Assuming everything follows, you should have a flashing LED that toggles every second.</p>
+<h2 id="notes">Notes</h2>
+<h2 id="making-development-easier-symlinks-and-env-variables">Making development easier. Symlinks and env variables</h2>
+<p>Typing <code>python3 pyboard.py</code> is a bit cumbersome. We can make this easier by creating a symlink. In the tools folder, run the following.</p>
+<pre><code class="bash">sudo ln -s tools/pyboard.py /usr/bin/pyboard
+</code></pre>
+
+<p>The following command should then run.</p>
+<pre><code class="bash"> pyboard.py --device /dev/ttyACM0 ls
+</code></pre>
+
+<p>Of course, naming the device is a bit tiring. If you interact with only one board, then we can set the appropiate environment variable.</p>
+<pre><code class="bash"># Assumes our board is located here.
+export PYBOARD_DEVICE=/dev/ttyACM0
+</code></pre>
+
+<h3 id="location-and-content-of-onboard-files">Location and content of onboard files</h3>
+<p>You won't be able to see the contents inside the MCU using a typical File Explorer. Copying and pasting code like that would most likely not work. The <code>pyboard.py</code> has commands that allows you to see what is stored there.</p>
+<pre><code class="bash">python3 pyboard.py  --device /dev/ttyACM0 ls
+</code></pre>
+
+<p>Similarly we can see the content of what the <code>main.py</code> is using <code>cat</code></p>
+<pre><code class="bash">python3 pyboard.py --device /dev/ttyACM0 cat main.py
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../tutorials/" class="btn btn-neutral" title="Tutorials"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../tutorials/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>
