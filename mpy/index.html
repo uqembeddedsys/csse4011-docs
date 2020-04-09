@@ -200,11 +200,12 @@ python3 pyboard.py --device /dev/ttyACM0 -f cp main.py :main.py
 <h2 id="notes">Notes</h2>
 <h2 id="making-development-easier-symlinks-and-env-variables">Making development easier. Symlinks and env variables</h2>
 <p>Typing <code>python3 pyboard.py</code> is a bit cumbersome. We can make this easier by creating a symlink. In the tools folder, run the following.</p>
-<pre><code class="bash">sudo ln -s /path/to/micropython/tools/pyboard.py /usr/bin/pyboard
+<pre><code class="bash"># Replace /path/to to where the micropython repository lies
+sudo ln -s /path/to/micropython/tools/pyboard.py /usr/bin/pyboard
 </code></pre>
 
 <p>The following command should then run.</p>
-<pre><code class="bash"> pyboard --device /dev/ttyACM0 -f ls
+<pre><code class="bash">pyboard --device /dev/ttyACM0 -f ls
 </code></pre>
 
 <p>Of course, naming the device is a bit tiring. If you interact with only one board, then we can set the appropiate environment variable.</p>
@@ -213,12 +214,12 @@ export PYBOARD_DEVICE=/dev/ttyACM0
 </code></pre>
 
 <h3 id="location-and-content-of-onboard-files">Location and content of onboard files</h3>
-<p>You won't be able to see the contents inside the MCU using a typical File Explorer. Copying and pasting code like that would most likely not work. The <code>pyboard.py</code> has commands that allows you to see what is stored there.</p>
-<pre><code class="bash">python3 pyboard.py  --device /dev/ttyACM0 -f ls
+<p>You won't be able to see the contents inside the MCU using a typical File Explorer. Copying and pasting code like that would most likely not work. <code>pyboard</code> has commands that allows you to see what is stored there.</p>
+<pre><code class="bash">pyboard  --device /dev/ttyACM0 -f ls
 </code></pre>
 
 <p>Similarly we can see the content of what the <code>main.py</code> is using <code>cat</code></p>
-<pre><code class="bash">python3 pyboard.py --device /dev/ttyACM0 -f cat main.py
+<pre><code class="bash">pyboard --device /dev/ttyACM0 -f cat main.py
 </code></pre>
               
             </div>
