@@ -1,9 +1,9 @@
 site_name: csse4011-docs
 nav:
-- Home: index.md
-- Getting Started: getting_started.md
-- MicroPython: mpy.md
-- Videos: 
-    - 'Ei-freertos Video Tutorials' : 'vids/tutorials.md'
-    - 'CSSE4011 Practical Introductions' : 'vids/prac_vids.md'
+    - Home: index.md
+    - Getting Started: getting_started.md
+    - MicroPython: mpy.md
+    - Videos: 
+        - 'Ei-freertos Video Tutorials' : 'vids/tutorials.md'
+        - 'CSSE4011 Practical Introductions' : 'vids/prac_vids.md'
 theme: readthedocs
