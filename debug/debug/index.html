@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>CSSE4011 Practical Introductions - csse4011-docs</title>
+  <title>Debug - csse4011-docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "CSSE4011 Practical Introductions";
-    var mkdocs_page_input_path = "vids\\prac_vids.md";
+    var mkdocs_page_name = "Debug";
+    var mkdocs_page_input_path = "debug\\debug.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -60,23 +60,27 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">VSCode and Debugging</span></p>
-                <ul>
+                <ul class="current">
                     <li class="toctree-l1"><a class="reference internal" href="../../vsworkspace/vsworkspace/">VSCode Settings</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../debug/debug/">Debug</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Debug</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#setting-up-gdb-tools">Setting up gdb tools</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#setting-up-vs-code">Setting up vs-code</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#creating-launchjson">Creating launch.json</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#section-4-running-the-debugger">Section 4: Running the Debugger</a>
+    </li>
+    </ul>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Videos</span></p>
-                <ul class="current">
-                    <li class="toctree-l1"><a class="reference internal" href="../tutorials/">Ei-freertos Video Tutorials</a>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../vids/tutorials/">Ei-freertos Video Tutorials</a>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">CSSE4011 Practical Introductions</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#prac-1-with-matt-and-serge">Prac 1 - With Matt and Serge</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#prac-2-with-matt-and-john">Prac 2 - With Matt and John</a>
-    </li>
-    </ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../vids/prac_vids/">CSSE4011 Practical Introductions</a>
                     </li>
                 </ul>
       </div>
@@ -100,11 +104,11 @@
     
       
         
-          <li>Videos &raquo;</li>
+          <li>VSCode and Debugging &raquo;</li>
         
       
     
-    <li>CSSE4011 Practical Introductions</li>
+    <li>Debug</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -115,18 +119,32 @@
           <div role="main">
             <div class="section">
               
-                <p>This page maintains any introduction for CSSE4011 Pracs.</p>
-<h1 id="prac-intros">Prac Intros</h1>
-<h2 id="prac-1-with-matt-and-serge">Prac 1 - With Matt and Serge</h2>
-<p><iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1299541/sp/129954100/embedIframeJs/uiconf_id/45070542/partner_id/1299541?iframeembed=true&playerId=kaltura_player&entry_id=0_sulzq0n1" width="700" height="559" allowfullscreen webkitallowfullscreen mozAllowFullScreen frameborder="0"><a href="http://corp.kaltura.com/products/video-platform-features">Video Platform</a>
-<a href="http://corp.kaltura.com/Products/Features/Video-Management">Video Management</a> 
-<a href="http://corp.kaltura.com/Video-Solutions">Video Solutions</a>
-<a href="http://corp.kaltura.com/Products/Features/Video-Player">Video Player</a></iframe></p>
-<h2 id="prac-2-with-matt-and-john">Prac 2 - With Matt and John</h2>
-<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1299541/sp/129954100/embedIframeJs/uiconf_id/45070542/partner_id/1299541?iframeembed=true&playerId=kaltura_player&entry_id=0_igzolj2y" width="700" height="559" allowfullscreen webkitallowfullscreen mozAllowFullScreen frameborder="0"><a href="http://corp.kaltura.com/products/video-platform-features">Video Platform</a>
-<a href="http://corp.kaltura.com/Products/Features/Video-Management">Video Management</a> 
-<a href="http://corp.kaltura.com/Video-Solutions">Video Solutions</a>
-<a href="http://corp.kaltura.com/Products/Features/Video-Player">Video Player</a></iframe>
+                <h1 id="csse4011-debug-guide">CSSE4011 Debug Guide</h1>
+<p>This document details how to set up and use a debugging environment.</p>
+<hr />
+<h2 id="setting-up-gdb-tools">Setting up gdb tools</h2>
+<p>You should already have arm-none-eabi-gdb installed, if you do, skip this section.</p>
+<pre><code>sudo apt-get install gdb-arm-none-eabi
+sudo ln -s /usr/bin/gdb-multiarch /usr/local/bin/arm-none-eabi-gdb
+</code></pre>
+
+<h2 id="setting-up-vs-code">Setting up vs-code</h2>
+<p>Follow the setup instructions in the VSCode Settings section</p>
+<p>Go into the extensions section and search for Cortex-Debug, install it, then restart vs-code</p>
+<h2 id="creating-launchjson">Creating launch.json</h2>
+<p>go to your app</p>
+<pre><code>make launch
+</code></pre>
+
+<p>This will generate a launch.json file inside a folder called .vscode inside your root folder (either code or ei-freertos, depending on your setup), this is needed for the debugger to work.</p>
+<p>You will need to run this every time you flash a new application onto your board.</p>
+<h2 id="section-4-running-the-debugger">Section 4: Running the Debugger</h2>
+<p>In vscode, press the Debug button on the left ribbon, at the top of the window, 2 configurations should become available, </p>
+<p>Debug Attach (Jlink)
+Debug Launch (JLink)</p>
+<p>Use Debug Attach to start a debug session on a currently running application and Debug Launch to restart the board and begin debugging.</p>
+<p>Then use standard debugging commands to go through your code, e.g. Continue, Step Over, Step Into, etc</p>
+<p>Click on the left of the line number to create breakpoints</p>
               
             </div>
           </div>
@@ -134,8 +152,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="../../vids/tutorials/" class="btn btn-neutral float-right" title="Ei-freertos Video Tutorials">Next <span class="icon icon-circle-arrow-right"></span></a>
       
-        <a href="../tutorials/" class="btn btn-neutral" title="Ei-freertos Video Tutorials"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+        <a href="../../vsworkspace/vsworkspace/" class="btn btn-neutral" title="VSCode Settings"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -161,8 +181,10 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../tutorials/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../../vsworkspace/vsworkspace/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
+      
+        <span style="margin-left: 15px"><a href="../../vids/tutorials/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

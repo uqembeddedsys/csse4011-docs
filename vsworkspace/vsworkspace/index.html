@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>CSSE4011 Practical Introductions - csse4011-docs</title>
+  <title>VSCode Settings - csse4011-docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "CSSE4011 Practical Introductions";
-    var mkdocs_page_input_path = "vids\\prac_vids.md";
+    var mkdocs_page_name = "VSCode Settings";
+    var mkdocs_page_input_path = "vsworkspace\\vsworkspace.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -60,23 +60,25 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">VSCode and Debugging</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../vsworkspace/vsworkspace/">VSCode Settings</a>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">VSCode Settings</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#create-a-workspace">Create a workspace</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#install-the-cc-extension">Install the C/C++ extension</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#create-workspace-settings">Create workspace settings</a>
+    </li>
+    </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../debug/debug/">Debug</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Videos</span></p>
-                <ul class="current">
-                    <li class="toctree-l1"><a class="reference internal" href="../tutorials/">Ei-freertos Video Tutorials</a>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../vids/tutorials/">Ei-freertos Video Tutorials</a>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">CSSE4011 Practical Introductions</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#prac-1-with-matt-and-serge">Prac 1 - With Matt and Serge</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#prac-2-with-matt-and-john">Prac 2 - With Matt and John</a>
-    </li>
-    </ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../vids/prac_vids/">CSSE4011 Practical Introductions</a>
                     </li>
                 </ul>
       </div>
@@ -100,11 +102,11 @@
     
       
         
-          <li>Videos &raquo;</li>
+          <li>VSCode and Debugging &raquo;</li>
         
       
     
-    <li>CSSE4011 Practical Introductions</li>
+    <li>VSCode Settings</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -115,18 +117,20 @@
           <div role="main">
             <div class="section">
               
-                <p>This page maintains any introduction for CSSE4011 Pracs.</p>
-<h1 id="prac-intros">Prac Intros</h1>
-<h2 id="prac-1-with-matt-and-serge">Prac 1 - With Matt and Serge</h2>
-<p><iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1299541/sp/129954100/embedIframeJs/uiconf_id/45070542/partner_id/1299541?iframeembed=true&playerId=kaltura_player&entry_id=0_sulzq0n1" width="700" height="559" allowfullscreen webkitallowfullscreen mozAllowFullScreen frameborder="0"><a href="http://corp.kaltura.com/products/video-platform-features">Video Platform</a>
-<a href="http://corp.kaltura.com/Products/Features/Video-Management">Video Management</a> 
-<a href="http://corp.kaltura.com/Video-Solutions">Video Solutions</a>
-<a href="http://corp.kaltura.com/Products/Features/Video-Player">Video Player</a></iframe></p>
-<h2 id="prac-2-with-matt-and-john">Prac 2 - With Matt and John</h2>
-<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1299541/sp/129954100/embedIframeJs/uiconf_id/45070542/partner_id/1299541?iframeembed=true&playerId=kaltura_player&entry_id=0_igzolj2y" width="700" height="559" allowfullscreen webkitallowfullscreen mozAllowFullScreen frameborder="0"><a href="http://corp.kaltura.com/products/video-platform-features">Video Platform</a>
-<a href="http://corp.kaltura.com/Products/Features/Video-Management">Video Management</a> 
-<a href="http://corp.kaltura.com/Video-Solutions">Video Solutions</a>
-<a href="http://corp.kaltura.com/Products/Features/Video-Player">Video Player</a></iframe>
+                <h1 id="setting-up-vs-code">Setting up vs-code</h1>
+<h2 id="create-a-workspace">Create a workspace</h2>
+<p>In vs-code go to File -&gt; Open Folder and select the ei-freertos folder.</p>
+<p>The folder should be visible in the Explorer section of vs-code.</p>
+<p>File -&gt; Save Workspace As -&gt; name the workspace. e.g. csse4011lib.code-workspace</p>
+<p>Note, you may create a workspace under ei-freertos or under your code folder, by default the configuration tools are set up for ei-freertos to be the workspace folder, however you can easily change this by modifying the generate_cpp_properties.py file. </p>
+<p>Now, whenever you open up vscode, open this workspace file to resume where you left off.</p>
+<h2 id="install-the-cc-extension">Install the C/C++ extension</h2>
+<p>You will need this for IntelliSense (autocompletion) and browsing your code. Go to the extensions tab, search for C/C++ and install it. Restart vscode.</p>
+<h2 id="create-workspace-settings">Create workspace settings</h2>
+<pre><code>make vscode
+</code></pre>
+
+<p>In vscode, under explorer, click the refresh explorer button, a new folder should appear under the root folder called .vscode. This folder contains a settings file that modifies some vscode behaviour as well as a properties file which contains the folders where your code should look for files.</p>
               
             </div>
           </div>
@@ -134,8 +138,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="../../debug/debug/" class="btn btn-neutral float-right" title="Debug">Next <span class="icon icon-circle-arrow-right"></span></a>
       
-        <a href="../tutorials/" class="btn btn-neutral" title="Ei-freertos Video Tutorials"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+        <a href="../../mpy/" class="btn btn-neutral" title="MicroPython"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -161,8 +167,10 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../tutorials/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../../mpy/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
+      
+        <span style="margin-left: 15px"><a href="../../debug/debug/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
