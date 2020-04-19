@@ -3,6 +3,9 @@ nav:
     - Home: index.md
     - Getting Started: getting_started.md
     - MicroPython: mpy.md
+    - VSCode and Debugging:
+        - 'VSCode Settings' : 'vsworkspace/vsworkspace.md' 
+        - 'Debug' : 'debug/debug.md'
     - Videos: 
         - 'Ei-freertos Video Tutorials' : 'vids/tutorials.md'
         - 'CSSE4011 Practical Introductions' : 'vids/prac_vids.md'
